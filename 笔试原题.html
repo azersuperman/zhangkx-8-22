@@ -10,15 +10,18 @@
     <script>
       //   封装一个函数, 利用reduce处理http://www.baidu.com/?name=zhangsan&age=18&sex=nan#, 要求返回一个对象
       // 输出的结果 : { name:"zhangsan",age:18,sex:nan }作业
-      const url = 'http://www.baidu.com/?name=zhangsan&age=18&sex=nan'
+      const url = 'http://www.baidu.com/?name=zhangsan&age=18&sex=nan#'
       function process(url) {
-        const newString = url.split('?')
-        console.log(newString)
-        console.log(newString[1].split('&'))
-        
-        console.log()
-        const arrObject = url.reduce((a, b) => a - b)
-        return arrObject
+        const newUrl = url.split('?')[1].split('#')[0].split('&')
+        const result = newUrl.reduce((res, item) => {
+          console.log(res)
+          console.log(item)
+          let [key, val] = item.split('=')
+          console.log([key, val])
+          res[key] = val
+          return res
+        }, {})
+        return result
       }
       console.log(process(url))
       // 输出: {name:"zhangsan",age:18,sex:nan }
