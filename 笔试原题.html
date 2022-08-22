@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   封装一个函数, 利用reduce处理http://www.baidu.com/?name=zhangsan&age=18&sex=nan#, 要求返回一个对象
+      // 输出的结果 : { name:"zhangsan",age:18,sex:nan }作业
+      const url = 'http://www.baidu.com/?name=zhangsan&age=18&sex=nan'
+      function process(url) {
+        const newString = url.split('?')
+        console.log(newString)
+        console.log(newString[1].split('&'))
+        
+        console.log()
+        const arrObject = url.reduce((a, b) => a - b)
+        return arrObject
+      }
+      console.log(process(url))
+      // 输出: {name:"zhangsan",age:18,sex:nan }
+    </script>
+  </body>
+</html>
